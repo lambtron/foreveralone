@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="col-md-4 col-md-offset-4">
+    <section id="signup">
+      <div class="row">
+        <h3>How to get your report</h3>
+        <hr>
+        <p>
+          1. Go <a href="https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token" target="_blank">here</a>, copy the URL, then paste it below:
+        </p>
+        <input name="tinderToken" class="form-control" placeholder="place url here (required)" />
+        <br>
+        <p>
+          2. Get your <a href="http://findmyfacebookid.com/" target="_blank">FB userId</a> and paste it below:
+        </p>
+        <input name="tinderId" class="form-control" placeholder="FB userId (required)" />
+        <br>
+      </div>
+      <div id="message" class="alert alert-danger hide">Uh oh.. those fields above don't look right.</div>
+      <div style="text-align: center; padding: 20px">
+        <div id="submit" class="btn btn-primary login" style="font-size: 1.6em;" disabled>Let's Do It</div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
