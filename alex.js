@@ -1,5 +1,11 @@
 
 /**
+ * How to run this.
+ *
+ * $ node --harmony alex.js
+ */
+
+/**
  * Module dependencies.
  */
 
