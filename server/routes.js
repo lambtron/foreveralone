@@ -20,7 +20,8 @@ exports.index = function *index() {
  */
 
 exports.report = function *report() {
-  var data = this.request.query;
+  var qs = this.request.query;
+  var data = JSON.parse(qs.js);
   this.body = yield render('report', { data: data });
 };
 
@@ -35,6 +36,6 @@ exports.submit = function *submit() {
   yield tinder.authenticate();
   user = yield tinder.getHistory();
   var data = report(user);
-  // turn data to qs
-  return redirect('/r/' + qs);
+  var qs = encodeURI(JSON.stringify(data));
+  return redirect('/r/?js=' + qs);
 };
