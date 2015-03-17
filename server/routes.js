@@ -6,6 +6,7 @@
 var render = require('../lib/render');
 var Tinder = require('../lib/tinder');
 var report = require('../lib/report');
+// var fs = require('fs');
 
 /**
  * Render index html page.
@@ -35,6 +36,9 @@ exports.submit = function *submit() {
   var tinder = new Tinder(user.tinderId, user.tinderToken);
   yield tinder.authenticate();
   user = yield tinder.getHistory();
+
+  // fs.writeFileSync('tinder.txt', JSON.stringify(user, null, 2), { encoding: 'utf8' });
+
   var data = report(user);
   var qs = encodeURI(JSON.stringify(data));
   return redirect('/r/?js=' + qs);

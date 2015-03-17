@@ -4,7 +4,8 @@
    * Register button.
    */
 
-  $('#submit').click(function(user) {
+  $('#submit').click(function(e) {
+    var user = {};
     var tinderToken = $("input[name='tinderToken']").attr('token');
     var tinderId = $("input[name='tinderId']").val();
     if (tinderToken) user.tinderToken = tinderToken;
@@ -38,7 +39,17 @@
 
   $("input[name='tinderToken']").keyup(function() {
     var url = $(this).val();
+    console.log(url);
     $(this).attr('token', getTinderToken(url));
   });
+
+  /**
+   * Parse URL to get tinderToken.
+   */
+
+  function getTinderToken(url) {
+    var idx = url.indexOf('access_token');
+    return url.substr(idx + 'access_token'.length + 1).split('&')[0];
+  }
 
 })();
